@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>To Do List</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="addItem()"><ion-icon name="add-circle"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="items.length > 0">
+        <ion-list-header>
+            <ion-label>Todos</ion-label>
+        </ion-list-header>
+        <button ion-item *ngFor="let item of items" (click)="viewItem(item)">
+            {{item.title}}
+        </button>
+    </ion-list>
+    <div *ngIf="items.length === 0">
+        <ion-row center>
+            <ion-col text-center>
+                <div class="">
+                    <h5>You don't have any todo yet.</h5>
+                </div>
+                <button ion-button color="secondary" shape="round" expand="block" (click)="addItem()">Add ToDo</button>
+            </ion-col>
+        </ion-row>
+    </div>
+
+</ion-content>
